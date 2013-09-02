@@ -6,9 +6,16 @@ import java.text.ParseException;
 import java.util.Collection;
 import java.util.List;
 
+import org.codehaus.jackson.map.ser.PropertyBuilder;
+
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.NodeIterator;
+import com.hp.hpl.jena.rdf.model.Property;
 import com.hp.hpl.jena.rdf.model.RDFNode;
+import com.hp.hpl.jena.rdf.model.ResIterator;
+import com.hp.hpl.jena.rdf.model.Resource;
+import com.hp.hpl.jena.rdf.model.Statement;
+import com.hp.hpl.jena.rdf.model.StmtIterator;
 
 import parser.NewsArticleParser;
 import parser.WebCrawler;
@@ -41,8 +48,20 @@ public class Main {
 		
 		QueryService queryService = new QueryService();
 		Model articles = queryService.describeAllNewsArticles();
-		articles.write(System.out, "TURTLE");
-		
+		ResIterator i = articles.listSubjects();
+		while (i.hasNext()) {
+		  Resource s = i.next();
+		  System.out.println( "Graph contains subject " + s );
+		  if (s.toString().contains("NewsArticle")) {
+			  for (StmtIterator j = s.listProperties(); j.hasNext(); ) {
+				    Statement t = j.next();
+				    System.out.println( "   with property " + t.getPredicate() + 
+				                        " ---> " + t.getObject() );
+				    if (t.getPredicate().toString().contains("url")) {
+						
+					}
+		  }
+		  }}
 		RDFModel.getInstance().closeModel();
 	}
 	

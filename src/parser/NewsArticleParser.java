@@ -6,6 +6,8 @@ import java.net.URISyntaxException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Iterator;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -21,6 +23,7 @@ import domain.ImageObject;
 import domain.NewsArticle;
 import domain.Organisation;
 import domain.Person;
+import domain.Thing;
 
 public class NewsArticleParser {
 
@@ -158,9 +161,18 @@ public class NewsArticleParser {
 	public static JsonObject serialize(NewsArticle newsArticle){
 		JsonObject newsArticleJson = new JsonObject();
 		
-		newsArticleJson.addProperty("datePublished,", newsArticle.getDatePublished().toGMTString());
 		newsArticleJson.addProperty("headline", newsArticle.getHeadline());
+		newsArticleJson.addProperty("datePublished", newsArticle.getDatePublished().toString());
+		String about = "";
+		for (Thing a : newsArticle.getAbout()) {
+			about += ((AboutThing)a).getName() + " ";
+		}
 		newsArticleJson.addProperty("author", newsArticle.getAuthor().getName());
+		newsArticleJson.addProperty("about", about);
+		newsArticleJson.addProperty("inLanguage", newsArticle.getInLanguage());
+		newsArticleJson.addProperty("genre", newsArticle.getGenre());
+		newsArticleJson.addProperty("provider", newsArticle.getProvider().getName());
+		newsArticleJson.addProperty("type", "newsArticle");
 		
 		return newsArticleJson;
 	}

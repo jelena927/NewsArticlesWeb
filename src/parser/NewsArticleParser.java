@@ -11,6 +11,9 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
 import util.URIGenerator;
 
 import domain.AboutThing;
@@ -150,5 +153,15 @@ public class NewsArticleParser {
 			}
 		}
 		return article;
+	}
+	
+	public static JsonObject serialize(NewsArticle newsArticle){
+		JsonObject newsArticleJson = new JsonObject();
+		
+		newsArticleJson.addProperty("datePublished,", newsArticle.getDatePublished().toGMTString());
+		newsArticleJson.addProperty("headline", newsArticle.getHeadline());
+		newsArticleJson.addProperty("author", newsArticle.getAuthor().getName());
+		
+		return newsArticleJson;
 	}
 }

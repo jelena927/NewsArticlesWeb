@@ -48,7 +48,7 @@ public class RDFModel {
 		writer.save(o);
 	}
 	
-	public void close(){
+	public void closeModel(){
 		dataProvider.close();
 	}
 	

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7">
+		<attributes>
+			<attribute name="owner.project.facets" value="java"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/asm-3.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/gson-2.2.4-javadoc.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/gson-2.2.4-sources.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/gson-2.2.4.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/httpclient-4.1.2.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/httpcore-4.1.3.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jackson-core-asl-1.9.2.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jackson-jaxrs-1.9.2.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jackson-mapper-asl-1.9.2.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jackson-xc-1.9.2.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jcl-over-slf4j-1.6.4.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jena-arq-2.9.4.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jena-core-2.7.4.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jena-iri-0.9.4.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jena-tdb-0.9.4.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jenabean-1.0.6.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jersey-client-1.12.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jersey-core-1.12.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jersey-json-1.12.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jersey-server-1.12.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jersey-servlet-1.12.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jettison-1.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jsoup-1.7.2.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jsr311-api-1.1.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/log4j-1.2.16.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/slf4j-api-1.6.4.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/slf4j-log4j12-1.6.4.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/xercesImpl-2.10.0.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/xml-apis-1.4.01.jar"/>
+	<classpathentry kind="output" path="build/classes"/>
+</classpath>

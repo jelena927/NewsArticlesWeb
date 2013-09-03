@@ -30,7 +30,7 @@ public class WebCrawler {
 		HttpClient httpClient = new DefaultHttpClient();
 		String stringResponse = null;
 		HttpResponse response = null;
-		for (int i = 0; i < 1; i++) {
+		for (int i = 0; i < 10; i++) {
 			HttpGet httpGet = new HttpGet(url + i);
 			response = httpClient.execute(httpGet);
 			if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {

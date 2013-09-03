@@ -46,6 +46,7 @@ public class Main {
 		
 		Collection<NewsArticle> kolekcija = queryService.getAllNewsArticles();
 		System.out.println(kolekcija.size());
+		RDFModel.getInstance().closeModel();
 	}
 	
 }

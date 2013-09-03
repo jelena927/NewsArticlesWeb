@@ -170,7 +170,11 @@ public class NewsArticleParser {
 		for (Thing a : newsArticle.getAbout()) {
 			about += ((AboutThing)a).getName() + " ";
 		}
-		//newsArticleJson.addProperty("author", newsArticle.getAuthor().getName());
+		try{
+			newsArticleJson.addProperty("author", newsArticle.getAuthor().getName());
+		}catch(Exception e){
+			
+		}
 		newsArticleJson.addProperty("about", about);
 		newsArticleJson.addProperty("inLanguage", newsArticle.getInLanguage());
 		newsArticleJson.addProperty("genre", newsArticle.getGenre());

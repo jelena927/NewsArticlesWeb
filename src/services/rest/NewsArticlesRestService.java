@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -38,44 +39,16 @@ import domain.NewsArticle;
 
 @Path("/newsArticles")
 public class NewsArticlesRestService {
-
+	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public String getAllMovies() {
-
+		
 		QueryService queryService = new QueryService();
-		JsonObject jsonObject = new JsonObject();
-		JsonArray jsonArray = new JsonArray();
-
-		Model articles = queryService.describeAllNewsArticles();
-		ResIterator i = articles.listSubjects();
-		while (i.hasNext()) {
-			Resource s = i.next();
-			if (s.toString().contains("/NewsArticle/")) {
-				for (StmtIterator j = s.listProperties(); j.hasNext();) {
-					Statement t = j.next();
-					if (t.getPredicate().toString().contains("url")) {
-						try {
-							jsonArray.add(NewsArticleParser
-									.serialize(NewsArticleParser.parse(t
-											.getObject().toString())));
-						} catch (Exception e) {
-							e.printStackTrace();
-						}
-					}
-				}
-				
-			}
-		}
-		RDFModel.getInstance().closeModel();
-		jsonObject.add("items", jsonArray);
-		JsonObject jsonArticle = new JsonObject();
-		jsonArticle.addProperty("pluralLabel", "News Articles");
-		jsonArticle.addProperty("uri", "http://schema.org/NewsArticle");
-		JsonObject jsonTypes = new JsonObject();
-		jsonTypes.add("NewsArticle", jsonArticle);
-		jsonObject.add("types", jsonTypes);
-		return jsonObject.toString();
+		
+		List<NewsArticle> kolekcija = queryService.getAllNewsArticles();
+		//RDFModel.getInstance().closeModel();
+		return NewsArticleParser.serialize(kolekcija).toString();
 
 	}
 }

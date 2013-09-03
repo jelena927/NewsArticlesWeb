@@ -6,7 +6,7 @@ import com.hp.hpl.jena.tdb.TDBFactory;
 
 public class TDBDataProvider implements DataProvider {
 
-	private static final String directory = "tdb";
+	private static final String directory = "C:\\Users\\Jelena\\workspace2\\NewsArticlesWeb\\NewsArticlesWeb\\tdb";
 	private Dataset dataset;
 
 	public TDBDataProvider() {

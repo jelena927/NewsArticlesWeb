@@ -7,12 +7,14 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Iterator;
+import java.util.List;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
@@ -162,7 +164,8 @@ public class NewsArticleParser {
 		JsonObject newsArticleJson = new JsonObject();
 		
 		newsArticleJson.addProperty("headline", newsArticle.getHeadline());
-		newsArticleJson.addProperty("datePublished", newsArticle.getDatePublished().toString());
+		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+		newsArticleJson.addProperty("datePublished", sdf.format(newsArticle.getDatePublished()));
 		String about = "";
 		for (Thing a : newsArticle.getAbout()) {
 			about += ((AboutThing)a).getName() + " ";
@@ -171,9 +174,25 @@ public class NewsArticleParser {
 		newsArticleJson.addProperty("about", about);
 		newsArticleJson.addProperty("inLanguage", newsArticle.getInLanguage());
 		newsArticleJson.addProperty("genre", newsArticle.getGenre());
-		newsArticleJson.addProperty("provider", newsArticle.getProvider().getName());
+		//newsArticleJson.addProperty("provider", newsArticle.getProvider().getName());
 		newsArticleJson.addProperty("type", "newsArticle");
 		
 		return newsArticleJson;
+	}
+	
+	public static JsonObject serialize(List<NewsArticle> articles){
+		JsonObject jsonObject = new JsonObject();
+		JsonArray jsonArray = new JsonArray();
+		for (NewsArticle newsArticle : articles) {
+			jsonArray.add(NewsArticleParser.serialize(newsArticle));
+		}
+		jsonObject.add("items", jsonArray);
+		JsonObject jsonArticle = new JsonObject();
+		jsonArticle.addProperty("pluralLabel", "News Articles");
+		jsonArticle.addProperty("uri", "http://schema.org/NewsArticle");
+		JsonObject jsonTypes = new JsonObject();
+		jsonTypes.add("NewsArticle", jsonArticle);
+		jsonObject.add("types", jsonTypes);
+		return jsonObject;
 	}
 }

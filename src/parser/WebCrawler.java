@@ -24,6 +24,7 @@ public class WebCrawler {
 
 	public static List<NewsArticle> craw() throws IOException,
 			URISyntaxException, ParseException {
+		List<String> parsirani = new ArrayList<>();
 		List<NewsArticle> list = new ArrayList<>();
 		String url = "http://query.nytimes.com/svc/cse/v2/sitesearch.json?pt=article&sort=newest&page=";
 		HttpClient httpClient = new DefaultHttpClient();
@@ -50,8 +51,11 @@ public class WebCrawler {
 					
 					String articleUrl = jsonElement.getAsJsonObject().get("url").getAsString();
 					try {
-						NewsArticle article = NewsArticleParser.parse(articleUrl);
-						list.add(article);
+						if(!parsirani.contains(articleUrl)){
+							NewsArticle article = NewsArticleParser.parse(articleUrl);
+							list.add(article);
+							parsirani.add(articleUrl);
+						}
 					} catch (Exception e) {
 						
 					}

@@ -13,7 +13,7 @@ Application workflow consists of the following phases
 2. Domain model
 Webpages of news articles from the New York Times website are analyzed in order to determine which classes and properties form the Schema.org vocabulary are supported. Based on that analysis, domain model is created and it is depicted in Picture 1.
 
-![Alt text](https://raw.github.com/jelena927/NewsArticlesWeb/blob/master/model.png "Domain model picture")
+![Alt text](https://raw.github.com/jelena927/NewsArticlesWeb/master/model.png "Domain model picture")
 
 Class NewsArticle contains basic information about a news article, such as: headline, ... It has reference to its author (class Person), its provider (class Organization), associated media (class ImageObject) and its theme (class Thing).
 

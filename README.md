@@ -2,13 +2,13 @@ NewsArticlesWeb
 ===============
 # 1. About the project
 The idea of this project is to create  an application for advanced news search using extracted metadata about news articles. The metadata is extracted from the website [New York Times](http://www.nytimes.com/). 
-Metadata is inserted in site's webpages in a structured format using [Microdata standard](http://dev.w3.org/html5/md/), specifically using [Schema.org](http://schema.org/) vocabulary. After the metadata is extracted, it is transformed to RDF format and stored into RDF repository. Access to the extracted data is enabled through RESTful services. News search is enabled through filter based search.
+Metadata is inserted in site's webpages in a structured format using [Microdata standard](http://dev.w3.org/html5/md/), specifically using [Schema.org](http://schema.org/) vocabulary. After the metadata is extracted, it is transformed to RDF format and stored into RDF repository. Access to the extracted data is enabled through RESTful service. News search is enabled through filter based search.
 
 Application workflow consists of the following phases
 - A web crawler parses news articles webpages from [New York Times](http://www.nytimes.com/) website and extracts news article metadata.
 - Extracted data is transformed into RDF triplets based on [Schema.org](http://schema.org/) vocabulary.
 - Data is persisted into an RDF repository.
-- Access to the data is enabled through RESTful services.
+- Access to the data is enabled through RESTful service.
 - Search news articles using filters so-called facet browsing.
 
 # 2. Domain model
@@ -27,7 +27,12 @@ Class *Organisation* contains basic information of a news article provider such 
 Class *ImageObject* contains basic information of news article associated media such as image url, copyright holder, width, height, description.
 
 # 3. The solution
+Application collects metadata about news Articles from the webpage [New York Times](http://www.nytimes.com/). The data is extracted by the crawler and is used to create domain objects of the application that are persisted into an RDF repository. The application allows access to that data via RESTful service.
 
+Application contains one REST service.
+* **api/newsArticles** - returns all news articles in JSON format
+
+Application call Rest service and forwards recived data to the tool for facet search.
 
 # 4. Technical realisation
 This application is written in programming language Java.

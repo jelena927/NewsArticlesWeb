@@ -1,49 +1,52 @@
 NewsArticlesWeb
 ===============
-1. About the project
-The idea of this project is to create  an application for advanced news search using extracted metadata about news articles. The metadata is extracted from the website New York Times. Metadata is inserted in site's webpages in a structured format using Microdata standard, specifically using Schema.org vocabulary. After the metadata is extracted, it is transformed to RDF format and stored into RDF repository. Access to the extracted data is enabled through RESTful services. News search is enabled through filter based search.
+# 1. About the project
+The idea of this project is to create  an application for advanced news search using extracted metadata about news articles. The metadata is extracted from the website [New York Times](http://www.nytimes.com/). 
+Metadata is inserted in site's webpages in a structured format using [Microdata standard](http://dev.w3.org/html5/md/), specifically using [Schema.org](http://schema.org/) vocabulary. After the metadata is extracted, it is transformed to RDF format and stored into RDF repository. Access to the extracted data is enabled through RESTful services. News search is enabled through filter based search.
 
 Application workflow consists of the following phases
- - A web crawler parses news articles webpages from New York Times website and extracts news article metadata.
-- Extracted data is transformed into RDF triplets based on Schema.org vocabulary.
+- A web crawler parses news articles webpages from [New York Times](http://www.nytimes.com/) website and extracts news article metadata.
+- Extracted data is transformed into RDF triplets based on [Schema.org](http://schema.org/) vocabulary.
 - Data is persisted into an RDF repository.
 - Access to the data is enabled through RESTful services.
 - Search news articles using filters so-called facet browsing.
 
-2. Domain model
+# 2. Domain model
 Webpages of news articles from the New York Times website are analyzed in order to determine which classes and properties form the Schema.org vocabulary are supported. Based on that analysis, domain model is created and it is depicted in Picture 1.
 
-![Alt text](https://raw.github.com/jelena927/NewsArticlesWeb/master/model.png "Domain model picture")
+![Picture 1 - Domain model](https://raw.github.com/jelena927/NewsArticlesWeb/master/model.png)
 
-Class NewsArticle contains basic information about a news article, such as: headline, ... It has reference to its author (class Person), its provider (class Organization), associated media (class ImageObject) and its theme (class Thing).
+Picture 1 - Domain model
 
-Class Person
+Class *NewsArticle* contains basic information about a news article. Those are: headline, alternativeHeadline, inLanguage, description, dateModified, datePublished, genre, articleSection, thumbnailUrl, has_Identifier, url. It has reference to its author (class Person), its provider (class Organization), associated media (class ImageObject) and its theme (class Thing).
 
-Class Organisation
+Class *Person* contains authors's name.
 
-Class ImageObject 
+Class *Organisation* contains basic information of a news article provider such as provider's name, tickerSymbol and url address.
 
-3. The solution
+Class *ImageObject* contains basic information of news article associated media such as image url, copyright holder, width, height, description.
+
+# 3. The solution
 
 
-4. Technical realisation
+# 4. Technical realisation
 This application is written in programming language Java.
 
-Jsoup library is used for analyzing and collecting data from the web pages. It provides a very convenient API for extracting and manipulating data, using the best of DOM, CSS, and jquery-like methods.
+[Jsoup library](http://jsoup.org/) is used for analyzing and collecting data from the web pages. It provides a very convenient API for extracting and manipulating data, using the best of DOM, CSS, and jquery-like methods.
 
-This application also uses Jenabean library for mapping Java objects into RDF triplets using annotations. Jenabean provides explicit binding between an object property and a particular RDF property.
+This application also uses [Jenabean library](https://code.google.com/p/jenabean/) for mapping Java objects into RDF triplets using annotations. Jenabean provides explicit binding between an object property and a particular RDF property.
 
-Jena TDB library is used for data storage in the RDF repository. TDB is a component of Jena for RDF storage and query. It support the full range of Jena APIs.
+[Jena TDB](http://jena.apache.org/documentation/tdb/) is used for data storage in the RDF repository. TDB is a component of Jena for RDF storage and query. It support the full range of Jena APIs.
 
-Implementation of the RESTful web service is supported by Jersey framework. Jersey is the open source JAX-RS Reference Implementation for building RESTful Web services. It uses annotations which define type of the HTTP requests (GET, POST ...) and also the path to the requested resource.
+Implementation of the RESTful web service is supported by [Jersey](https://jersey.java.net/) framework. Jersey is the open source JAX-RS Reference Implementation for building RESTful Web services. It uses annotations which define type of the HTTP requests (GET, POST ...) and also the path to the requested resource.
 
-For filter based browsing is used Exibit.  Exibit enables complex databases to be searched and browsed using faceted browsing.
+For filter based browsing is used [Exibit](http://www.simile-widgets.org/exhibit/).  Exibit enables complex databases to be searched and browsed using faceted browsing.
 
-5. Acknowledgements
-This application has been developed as a part of the project assignment for the subject Intelligent Systems at the Faculty of Organization Sciences, University of Belgrade, Serbia.
+# 5. Acknowledgements
+This application has been developed as a part of the project assignment for the subject [Intelligent Systems](http://is.fon.rs) at the Faculty of Organization Sciences, University of Belgrade, Serbia.
 
-6. Licence
-This software is licensed under the MIT License.
+# 6. Licence
+This software is licensed under the [MIT License](http://opensource.org/licenses/MIT).
 
 The MIT License (MIT)
 

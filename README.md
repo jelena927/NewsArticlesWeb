@@ -4,15 +4,15 @@ NewsArticlesWeb
 The idea of this project is to create  an application for advanced news search using extracted metadata about news articles. The metadata is extracted from the website [New York Times](http://www.nytimes.com/). 
 Metadata is inserted in site's webpages in a structured format using [Microdata standard](http://dev.w3.org/html5/md/), specifically using [Schema.org](http://schema.org/) vocabulary. After the metadata is extracted, it is transformed to RDF format and stored into RDF repository. Access to the extracted data is enabled through RESTful service. News search is enabled through filter based search.
 
-Application workflow consists of the following phases
+Application workflow consists of the following phases:
 - A web crawler parses news articles webpages from [New York Times](http://www.nytimes.com/) website and extracts news article metadata.
 - Extracted data is transformed into RDF triplets based on [Schema.org](http://schema.org/) vocabulary.
-- Data is persisted into an RDF repository.
+- Data is persisted into RDF repository.
 - Access to the data is enabled through RESTful service.
-- Search news articles using filters so-called facet browsing.
+- Search of news articles is enabled by facet browsing enabled interface.
 
 # 2. Domain model
-Webpages of news articles from the New York Times website are analyzed in order to determine which classes and properties form the Schema.org vocabulary are supported. Based on that analysis, domain model is created and it is depicted in Picture 1.
+Webpages of news articles from the New York Times website are analyzed in order to determine which classes and properties from the Schema.org vocabulary are supported. Based on that analysis, domain model is created and it is depicted in Picture 1.
 
 ![Picture 1 - Domain model](https://raw.github.com/jelena927/NewsArticlesWeb/master/model.png)
 
@@ -27,12 +27,12 @@ Class *Organisation* contains basic information of a news article provider such 
 Class *ImageObject* contains basic information of news article associated media such as image url, copyright holder, width, height, description.
 
 # 3. The solution
-Application collects metadata about news Articles from the webpage [New York Times](http://www.nytimes.com/). The data is extracted by the crawler and is used to create domain objects of the application that are persisted into an RDF repository. The application allows access to that data via RESTful service.
+Application collects metadata about news Articles from the webpage [New York Times](http://www.nytimes.com/). The data is extracted by the crawler and is used to create domain objects of the application that are persisted into the RDF repository. The application allows access to that data via RESTful service.
 
 Application contains one REST service.
 * **api/newsArticles** - returns all news articles in JSON format
 
-Application call Rest service and forwards recived data to the tool for facet search.
+Faceted search enabled interface fetches the data about news article from this REST service and uses the data to display results.
 
 # 4. Technical realisation
 This application is written in programming language Java.
@@ -47,10 +47,12 @@ Implementation of the RESTful web service is supported by [Jersey](https://jerse
 
 For filter based browsing is used [Exibit](http://www.simile-widgets.org/exhibit/).  Exibit enables complex databases to be searched and browsed using faceted browsing.
 
-# 5. Acknowledgements
+# 5. Running the application
+
+# 6. Acknowledgements
 This application has been developed as a part of the project assignment for the subject [Intelligent Systems](http://is.fon.rs) at the Faculty of Organization Sciences, University of Belgrade, Serbia.
 
-# 6. Licence
+# 7. Licence
 This software is licensed under the [MIT License](http://opensource.org/licenses/MIT).
 
 The MIT License (MIT)

@@ -47,7 +47,13 @@ Implementation of the RESTful web service is supported by [Jersey](https://jerse
 
 For filter based browsing is used [Exibit](http://www.simile-widgets.org/exhibit/).  Exibit enables complex databases to be searched and browsed using faceted browsing.
 
+![Picture 2 - Screenshot](https://raw.github.com/jelena927/NewsArticlesWeb/master/screenshot.png)
+
 # 5. Running the application
+To run the application you have to setup enviroment first. 
+- Change the path for the tdb folder in TDBProvider class.
+- Run main method to parse the web site and to fill the database. 
+- Depending on the address and port of the server running the application, address to the web service in a file newsArticles.html needs to be changed.
 
 # 6. Acknowledgements
 This application has been developed as a part of the project assignment for the subject [Intelligent Systems](http://is.fon.rs) at the Faculty of Organization Sciences, University of Belgrade, Serbia.

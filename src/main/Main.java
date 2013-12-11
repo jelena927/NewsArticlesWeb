@@ -26,30 +26,30 @@ import domain.NewsArticle;
 public class Main {
 
 	public static void main(String[] args) {
-//		try {
-//			List<NewsArticle> list = WebCrawler.craw();
-//			for (NewsArticle newsArticle : list) {
-//				RDFModel.getInstance().save(newsArticle);
-//			}
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (URISyntaxException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (ParseException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		
-		QueryService queryService = new QueryService();
-		
-		Collection<NewsArticle> kolekcija = queryService.getAllNewsArticles();
-		for (NewsArticle newsArticle : kolekcija) {
-			System.out.println(newsArticle.getAuthor());
+		try {
+			List<NewsArticle> list = WebCrawler.craw();
+			for (NewsArticle newsArticle : list) {
+				RDFModel.getInstance().save(newsArticle);
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (URISyntaxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		System.out.println(kolekcija.size());
-		//RDFModel.getInstance().closeModel();
+//		
+//		QueryService queryService = new QueryService();
+//		
+//		Collection<NewsArticle> kolekcija = queryService.getAllNewsArticles();
+//		for (NewsArticle newsArticle : kolekcija) {
+//			System.out.println(newsArticle.getAuthor());
+//		}
+//		System.out.println(kolekcija.size());
+		RDFModel.getInstance().closeModel();
 	}
 	
 }
